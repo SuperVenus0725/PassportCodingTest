@@ -1,0 +1,39 @@
+[package]
+name = "home_coding_testing"
+version = "0.1.0"
+authors = ["Ethan Frey <ethanfrey@users.noreply.github.com>"]
+edition = "2018"
+description = "Home testing for contract"
+
+
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+
+[dependencies]
+
+cosmwasm-std = { version = "0.16.0"  }
+cosmwasm-storage = { version = "0.16.0" }
+cw-storage-plus = { version = "0.9.1" }
+schemars = "0.8.1"
+cw2 = "0.9.0"
+thiserror = "1.0.23"
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+
+
+[dev-dependencies]
+cosmwasm-schema = "0.16.0"
